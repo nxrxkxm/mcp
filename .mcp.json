@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "data360": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "${CLAUDE_PROJECT_DIR}/.data360/data360-mcp-server.jar"
+      ],
+      "env": {
+        "DATA360_INSTANCE_URL": "${DATA360_INSTANCE_URL}",
+        "DATA360_ACCESS_TOKEN": "${DATA360_ACCESS_TOKEN:-}",
+        "DATA360_CLIENT_ID": "${DATA360_CLIENT_ID:-}",
+        "DATA360_CLIENT_SECRET": "${DATA360_CLIENT_SECRET:-}",
+        "DATA360_AUTH_FLOW": "${DATA360_AUTH_FLOW:-}",
+        "DATA360_LOGIN_URL": "${DATA360_LOGIN_URL:-https://login.salesforce.com}"
+      }
+    }
+  }
+}
