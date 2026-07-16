@@ -43,7 +43,9 @@ if [ -f "$JAR_DEST" ]; then
   exit 0
 fi
 
-# Fetch the Data 360 MCP server source as a tarball.
+# Fetch the Data 360 MCP server source as a tarball, falling back to git clone.
+# Some proxy policies block codeload (CONNECT 403) while allowing github.com git
+# over HTTPS — observed in this environment on 2026-07-15.
 if [ -f "$SRC_DIR/pom.xml" ]; then
   log "Source already present in $SRC_DIR; skipping download"
 else
@@ -51,9 +53,23 @@ else
   rm -rf "$SRC_DIR"
   mkdir -p "$SRC_DIR"
   if ! curl -fsSL --max-time 180 "$TARBALL_URL" | tar -xz -C "$SRC_DIR" --strip-components=1; then
-    log "ERROR: source download failed; skipping build" >&2
-    exit 0
+    log "tarball download failed; falling back to git clone"
+    rm -rf "$SRC_DIR"
+    if ! git clone --depth 1 --branch "$D360_REF" \
+        https://github.com/forcedotcom/d360-mcp-server.git "$SRC_DIR"; then
+      log "ERROR: source download failed (tarball and git clone); skipping build" >&2
+      exit 0
+    fi
   fi
+fi
+
+# Apply the repo-local overlay (i2message tools, catalog/test updates) on top of
+# the upstream source before building. Files in d360-overlay/ replace their
+# upstream counterparts wholesale, pinning them until upstreamed.
+OVERLAY_DIR="$PROJECT_DIR/d360-overlay"
+if [ -d "$OVERLAY_DIR/src" ]; then
+  log "Applying d360-overlay sources"
+  cp -r "$OVERLAY_DIR/src/." "$SRC_DIR/src/"
 fi
 
 # Build the runnable JAR (tests skipped for faster startup).
