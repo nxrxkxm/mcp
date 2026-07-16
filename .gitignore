@@ -1,2 +1,6 @@
 # Data 360 MCP server build artifacts (cloned source + built JAR)
 .data360/
+
+# Marketing Cloud HAR exports contain live session tokens - never commit
+*.har
+mc-session.har
