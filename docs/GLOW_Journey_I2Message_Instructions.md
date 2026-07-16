@@ -344,3 +344,38 @@ Keep the final response concise and include:
 - i2message message type and validation result
 - Direct Journey Builder link
 
+
+## Manual UI fallback (no HAR available)
+
+Use this flow when HAR-based automatic authentication is not possible
+(no HAR upload, expired capture, or blocked i2message network). It keeps
+the same non-negotiable rules (36-char UUID Journey key, dedicated Event
+Definition, exact Phone event key) but delegates template registration to
+the user's browser session.
+
+```
+36자 UUID Journey Key
+→ 전용 Event Definition 생성/연결
+→ 정확한 Phone Event Key 매핑
+→ REST activity를 metaData.isConfigured:false placeholder로 추가
+   (templateId 없이 execute/publish/validate URL과 phone 매핑만 구성)
+→ 사용자가 Journey Builder UI에서 해당 activity를 Edit
+   (현재 브라우저 인증으로 i2message가 신규 templateId를 등록)
+→ 저장되면 metaData.isConfigured:true로 전환됨
+```
+
+Rules for the placeholder step:
+
+1. Create the REST activity with `metaData.isConfigured: false` and NO
+   templateId. Do not copy a templateId from another Journey.
+2. Keep the standard execute/publish/validate URLs and the
+   `{{Event.<EVENT_DEFINITION_KEY>.Phone}}` mapping so the UI edit only
+   needs to register the template.
+3. After the user finishes editing in the UI, GET the Journey again and
+   verify `metaData.isConfigured: true` on the REST activity before
+   reporting completion. Do not run the API validate call for this flow;
+   Journey Builder validates on activation instead.
+4. Prefer the HAR-based automatic flow
+   (`d360_i2message_register_friendtalk_template` →
+   `d360_i2message_validate_journey_activity`) whenever a fresh HAR is
+   available; use this manual flow only as a fallback.
