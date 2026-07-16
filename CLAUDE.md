@@ -44,11 +44,11 @@
 ## 작업 이력 (2026-07-16 기준)
 
 - 이메일 콘텐츠 `GLOW_SunCare_v1` 생성 (asset id 52204, legacyId 18755).
-- 저니 `GLOW_SunCare_Retention` Draft 완성:
-  - ID `1aaab5e4-b372-42bf-952c-5502b35ed587`, key `9256ecd7-e7e1-4b49-9a10-7dc618347a52`, 버전 1
+- 저니 `GLOW_SunCare_Retention` Draft 완성 (초판은 사용자 측에서 삭제, 재생성본):
+  - ID `5d9ddbc7-682e-4c9b-a22f-9169b0ccfd17`, key `64a3cf2a-d56d-44ea-9a01-4febed660a86`, 버전 1
   - 진입 DE `GLOW_SunCare_Launch_Target` (id `f89f04a0-9c63-f111-9079-5cba2c19c328`)
-  - Event Definition `DEAudience-9256ecd7-e7e1-4b49-9a10-7dc618347a52`
-    (id `c3857831-e3ce-441f-b09d-7a5e7cca13cc`, 매일 16:00 KST, 2026-07-17~12-31)
+  - Event Definition `DEAudience-64a3cf2a-d56d-44ea-9a01-4febed660a86`
+    (id `261efa14-e45f-4689-800b-cf90cd78bc9e`, 매일 16:00 KST, 2026-07-17~12-31)
   - 흐름: 이메일(GLOW_SunCare_v1) → 3일 대기 → 오픈 분기 → 미오픈자만 친구톡
-  - 친구톡 템플릿 `3776c3cf-8952-4e34-b004-6c53ca60a90e`, 최종 validate HTTP 200 완료
+  - 친구톡 템플릿 `af42140b-86c9-42f8-bb40-80a762d6b7ee`, 최종 validate HTTP 200 완료
   - 활성화는 사용자 명시 요청 전까지 금지 (Draft 유지)
