@@ -43,7 +43,9 @@
 
 ## 작업 이력 (2026-07-16 기준)
 
-- 이메일 콘텐츠 `GLOW_SunCare_v1` 생성 (asset id 52204, legacyId 18755).
+- 이메일 콘텐츠 `GLOW_SunCare_v1` 생성 (asset id 52209, legacyId 18760, customerKey `72efdb40-15eb-46e4-a3c0-f6792b275060`).
+  - 이전 생성본(asset id 52204)은 BU에서 삭제되어 미존재 — 2026-07-16 재생성.
+  - CTA 링크는 임시 URL(`https://www.glow.co.kr/products/soft-glow-sun-serum`) — 실제 PDP URL 확정 시 교체 필요.
 - 저니 `GLOW_SunCare_Retention` Draft 완성 (초판은 사용자 측에서 삭제, 재생성본):
   - ID `5d9ddbc7-682e-4c9b-a22f-9169b0ccfd17`, key `64a3cf2a-d56d-44ea-9a01-4febed660a86`, 버전 1
   - 진입 DE `GLOW_SunCare_Launch_Target` (id `f89f04a0-9c63-f111-9079-5cba2c19c328`)
