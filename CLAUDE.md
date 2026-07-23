@@ -38,8 +38,10 @@
 - 이메일 액티비티 기본값: sendClassificationId `c16f1994-077c-eb11-ba34-f40343d01fd8`,
   senderProfileId `bf6f1994-077c-eb11-ba34-f40343d01fd8`,
   deliveryProfileId `c06f1994-077c-eb11-ba34-f40343d01fd8`, publicationListId `14`
-- 성과 분석 DMO: `Journey_Activity_Performance_Summary__dlm`,
-  `Journey_Revenue_ROI_Promo_Benchmark__dlm`
+- 성과 분석 데이터: `Journey_Activity_Performance_Summary_v2`,
+  `Journey_Revenue_ROI_Promo_Benchmark_v2` 기반 (쿼리 시 실제 테이블명은
+  `Journey_Activity_Performance_Summary_v2__dll`,
+  `Journey_Revenue_ROI_Promo_Benchmark_v2__dll` — v2가 최신 기준, 구버전 `__dlm`은 사용하지 않음)
 
 ## 작업 이력 (2026-07-16 기준)
 
